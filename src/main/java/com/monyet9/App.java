@@ -1,9 +1,7 @@
 package com.monyet9;
 
-import com.monyet9.models.Credential;
-import com.monyet9.models.Person;
-import com.monyet9.models.PersonComposite;
-import com.monyet9.models.UserCredential;
+import com.google.protobuf.Int32Value;
+import com.monyet9.models.*;
 import com.monyet9.models.common.CarType;
 import com.monyet9.models.common.Cars;
 
@@ -76,6 +74,17 @@ public class App
                         .setPassword("adde345").build()).build();
 
         authMode(credential);
+
+        Int32Value age= Int32Value.newBuilder()
+                .setValue(23).build();
+
+        PersonWrapper personWrapper= PersonWrapper.newBuilder()
+                .setAge(age).build();
+
+        if(personWrapper.hasAge()){
+            System.out.println("persona wrapper con eta : " + personWrapper);
+        }
+
     }
 
     /*
