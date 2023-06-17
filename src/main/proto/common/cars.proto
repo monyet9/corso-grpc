@@ -1,0 +1,12 @@
+syntax="proto3";
+
+// package dove si trova il mio proto file
+package common;
+option java_multiple_files=true;
+// indico dove viene generato il proto file
+option java_package="com.monyet9.models.common";
+
+
+message Cars {
+  string type = 1;
+}
