@@ -46,6 +46,37 @@ public final class BankServiceGrpc {
     return getLoginMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.monyet9.service.WithdrawRequest,
+      com.monyet9.service.WithdrawResponse> getGetMoneyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getMoney",
+      requestType = com.monyet9.service.WithdrawRequest.class,
+      responseType = com.monyet9.service.WithdrawResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.monyet9.service.WithdrawRequest,
+      com.monyet9.service.WithdrawResponse> getGetMoneyMethod() {
+    io.grpc.MethodDescriptor<com.monyet9.service.WithdrawRequest, com.monyet9.service.WithdrawResponse> getGetMoneyMethod;
+    if ((getGetMoneyMethod = BankServiceGrpc.getGetMoneyMethod) == null) {
+      synchronized (BankServiceGrpc.class) {
+        if ((getGetMoneyMethod = BankServiceGrpc.getGetMoneyMethod) == null) {
+          BankServiceGrpc.getGetMoneyMethod = getGetMoneyMethod =
+              io.grpc.MethodDescriptor.<com.monyet9.service.WithdrawRequest, com.monyet9.service.WithdrawResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getMoney"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.monyet9.service.WithdrawRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.monyet9.service.WithdrawResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BankServiceMethodDescriptorSupplier("getMoney"))
+              .build();
+        }
+      }
+    }
+    return getGetMoneyMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -95,10 +126,23 @@ public final class BankServiceGrpc {
   public interface AsyncService {
 
     /**
+     * <pre>
+     * unary request-response sync
+     * </pre>
      */
     default void login(com.monyet9.service.BankServiceRequest request,
         io.grpc.stub.StreamObserver<com.monyet9.service.BankServiceResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *server side -- server streaming , invio una richiesta e ricevo piu risposte
+     * </pre>
+     */
+    default void getMoney(com.monyet9.service.WithdrawRequest request,
+        io.grpc.stub.StreamObserver<com.monyet9.service.WithdrawResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMoneyMethod(), responseObserver);
     }
   }
 
@@ -130,11 +174,25 @@ public final class BankServiceGrpc {
     }
 
     /**
+     * <pre>
+     * unary request-response sync
+     * </pre>
      */
     public void login(com.monyet9.service.BankServiceRequest request,
         io.grpc.stub.StreamObserver<com.monyet9.service.BankServiceResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *server side -- server streaming , invio una richiesta e ricevo piu risposte
+     * </pre>
+     */
+    public void getMoney(com.monyet9.service.WithdrawRequest request,
+        io.grpc.stub.StreamObserver<com.monyet9.service.WithdrawResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetMoneyMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -155,10 +213,24 @@ public final class BankServiceGrpc {
     }
 
     /**
+     * <pre>
+     * unary request-response sync
+     * </pre>
      */
     public com.monyet9.service.BankServiceResponse login(com.monyet9.service.BankServiceRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *server side -- server streaming , invio una richiesta e ricevo piu risposte
+     * </pre>
+     */
+    public java.util.Iterator<com.monyet9.service.WithdrawResponse> getMoney(
+        com.monyet9.service.WithdrawRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetMoneyMethod(), getCallOptions(), request);
     }
   }
 
@@ -179,6 +251,9 @@ public final class BankServiceGrpc {
     }
 
     /**
+     * <pre>
+     * unary request-response sync
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.monyet9.service.BankServiceResponse> login(
         com.monyet9.service.BankServiceRequest request) {
@@ -188,6 +263,7 @@ public final class BankServiceGrpc {
   }
 
   private static final int METHODID_LOGIN = 0;
+  private static final int METHODID_GET_MONEY = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -209,6 +285,10 @@ public final class BankServiceGrpc {
         case METHODID_LOGIN:
           serviceImpl.login((com.monyet9.service.BankServiceRequest) request,
               (io.grpc.stub.StreamObserver<com.monyet9.service.BankServiceResponse>) responseObserver);
+          break;
+        case METHODID_GET_MONEY:
+          serviceImpl.getMoney((com.monyet9.service.WithdrawRequest) request,
+              (io.grpc.stub.StreamObserver<com.monyet9.service.WithdrawResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -235,6 +315,13 @@ public final class BankServiceGrpc {
               com.monyet9.service.BankServiceRequest,
               com.monyet9.service.BankServiceResponse>(
                 service, METHODID_LOGIN)))
+        .addMethod(
+          getGetMoneyMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.monyet9.service.WithdrawRequest,
+              com.monyet9.service.WithdrawResponse>(
+                service, METHODID_GET_MONEY)))
         .build();
   }
 
@@ -284,6 +371,7 @@ public final class BankServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BankServiceFileDescriptorSupplier())
               .addMethod(getLoginMethod())
+              .addMethod(getGetMoneyMethod())
               .build();
         }
       }

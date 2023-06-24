@@ -20,6 +20,21 @@ public final class BankServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_service_BankServiceRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service_WithdrawRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service_WithdrawRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service_WithdrawResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service_WithdrawResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service_Money_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service_Money_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_service_BankServiceResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -36,12 +51,17 @@ public final class BankServiceOuterClass {
       "\n\031service/bankService.proto\022\007service\032\036go" +
       "ogle/protobuf/wrappers.proto\"8\n\022BankServ" +
       "iceRequest\022\020\n\010username\030\001 \001(\t\022\020\n\010password" +
-      "\030\002 \001(\t\"`\n\023BankServiceResponse\022\014\n\004nome\030\001 " +
-      "\001(\t\022\017\n\007cognome\030\002 \001(\t\022*\n\005saldo\030\003 \001(\0132\033.go" +
-      "ogle.protobuf.Int32Value2Q\n\013BankService\022" +
-      "B\n\005login\022\033.service.BankServiceRequest\032\034." +
-      "service.BankServiceResponseB\027\n\023com.monye" +
-      "t9.serviceP\001b\006proto3"
+      "\030\002 \001(\t\"D\n\017WithdrawRequest\022\020\n\010username\030\001 " +
+      "\001(\t\022\020\n\010password\030\002 \001(\t\022\r\n\005value\030\003 \001(\t\"1\n\020" +
+      "WithdrawResponse\022\035\n\005money\030\001 \001(\0132\016.servic" +
+      "e.Money\"\026\n\005Money\022\r\n\005value\030\001 \001(\005\"`\n\023BankS" +
+      "erviceResponse\022\014\n\004nome\030\001 \001(\t\022\017\n\007cognome\030" +
+      "\002 \001(\t\022*\n\005saldo\030\003 \001(\0132\033.google.protobuf.I" +
+      "nt32Value2\224\001\n\013BankService\022B\n\005login\022\033.ser" +
+      "vice.BankServiceRequest\032\034.service.BankSe" +
+      "rviceResponse\022A\n\010getMoney\022\030.service.With" +
+      "drawRequest\032\031.service.WithdrawResponse0\001" +
+      "B\027\n\023com.monyet9.serviceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -54,8 +74,26 @@ public final class BankServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_BankServiceRequest_descriptor,
         new java.lang.String[] { "Username", "Password", });
-    internal_static_service_BankServiceResponse_descriptor =
+    internal_static_service_WithdrawRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_service_WithdrawRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service_WithdrawRequest_descriptor,
+        new java.lang.String[] { "Username", "Password", "Value", });
+    internal_static_service_WithdrawResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_service_WithdrawResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service_WithdrawResponse_descriptor,
+        new java.lang.String[] { "Money", });
+    internal_static_service_Money_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_service_Money_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service_Money_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_service_BankServiceResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_service_BankServiceResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_BankServiceResponse_descriptor,
