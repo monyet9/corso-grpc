@@ -15,7 +15,10 @@ message Person {
 }
 
 message PersonWrapper {
-  google.protobuf.StringValue name = 1;
-  google.protobuf.StringValue surname = 2;
-  google.protobuf.Int32Value  age = 3;
+  //TAG , il protoBuffer rispetto utilizza come chiavi il numero dichiarato  affianco al tipo.
+  // Da 1 a 15 vengono dichirati i campi utilizzati piu frequentemente .(hanno lunghezza di 1byte)
+  // da 16 a 2047 quelli diciamo opzionali . (hanno lunghezza di 2byte)
+  google.protobuf.StringValue name = 1; //TAG
+  google.protobuf.StringValue surname = 2;//TAG
+  google.protobuf.Int32Value  age = 3;//TAG
 }

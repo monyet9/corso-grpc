@@ -1,0 +1,23 @@
+syntax="proto3";
+package service;
+
+option java_multiple_files=true;
+option java_package="com.monyet9.service";
+
+import "google/protobuf/wrappers.proto";
+message BankServiceRequest{
+  string username=1;
+  string password=2;
+}
+
+
+message BankServiceResponse{
+  string nome=1;
+  string cognome=2;
+  google.protobuf.Int32Value saldo=3;
+}
+
+
+service BankService{
+  rpc login(BankServiceRequest) returns (BankServiceResponse);
+}
