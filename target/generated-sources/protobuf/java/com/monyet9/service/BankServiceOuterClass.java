@@ -39,6 +39,16 @@ public final class BankServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_service_BankServiceResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service_DepositoRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service_DepositoRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_service_DepositoResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_service_DepositoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -57,11 +67,16 @@ public final class BankServiceOuterClass {
       "e.Money\"\026\n\005Money\022\r\n\005value\030\001 \001(\005\"`\n\023BankS" +
       "erviceResponse\022\014\n\004nome\030\001 \001(\t\022\017\n\007cognome\030" +
       "\002 \001(\t\022*\n\005saldo\030\003 \001(\0132\033.google.protobuf.I" +
-      "nt32Value2\224\001\n\013BankService\022B\n\005login\022\033.ser" +
-      "vice.BankServiceRequest\032\034.service.BankSe" +
-      "rviceResponse\022A\n\010getMoney\022\030.service.With" +
-      "drawRequest\032\031.service.WithdrawResponse0\001" +
-      "B\027\n\023com.monyet9.serviceP\001b\006proto3"
+      "nt32Value\"N\n\017DepositoRequest\022\020\n\010username" +
+      "\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\027\n\017amuountDepos" +
+      "ito\030\003 \001(\t\"!\n\020DepositoResponse\022\r\n\005total\030\001" +
+      " \001(\t2\327\001\n\013BankService\022B\n\005login\022\033.service." +
+      "BankServiceRequest\032\034.service.BankService" +
+      "Response\022A\n\010getMoney\022\030.service.WithdrawR" +
+      "equest\032\031.service.WithdrawResponse0\001\022A\n\010d" +
+      "eposito\022\030.service.DepositoRequest\032\031.serv" +
+      "ice.DepositoResponse(\001B\027\n\023com.monyet9.se" +
+      "rviceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -98,6 +113,18 @@ public final class BankServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_BankServiceResponse_descriptor,
         new java.lang.String[] { "Nome", "Cognome", "Saldo", });
+    internal_static_service_DepositoRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_service_DepositoRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service_DepositoRequest_descriptor,
+        new java.lang.String[] { "Username", "Password", "AmuountDeposito", });
+    internal_static_service_DepositoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_service_DepositoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_service_DepositoResponse_descriptor,
+        new java.lang.String[] { "Total", });
     com.google.protobuf.WrappersProto.getDescriptor();
   }
 

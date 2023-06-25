@@ -77,6 +77,37 @@ public final class BankServiceGrpc {
     return getGetMoneyMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.monyet9.service.DepositoRequest,
+      com.monyet9.service.DepositoResponse> getDepositoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "deposito",
+      requestType = com.monyet9.service.DepositoRequest.class,
+      responseType = com.monyet9.service.DepositoResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<com.monyet9.service.DepositoRequest,
+      com.monyet9.service.DepositoResponse> getDepositoMethod() {
+    io.grpc.MethodDescriptor<com.monyet9.service.DepositoRequest, com.monyet9.service.DepositoResponse> getDepositoMethod;
+    if ((getDepositoMethod = BankServiceGrpc.getDepositoMethod) == null) {
+      synchronized (BankServiceGrpc.class) {
+        if ((getDepositoMethod = BankServiceGrpc.getDepositoMethod) == null) {
+          BankServiceGrpc.getDepositoMethod = getDepositoMethod =
+              io.grpc.MethodDescriptor.<com.monyet9.service.DepositoRequest, com.monyet9.service.DepositoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "deposito"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.monyet9.service.DepositoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.monyet9.service.DepositoResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BankServiceMethodDescriptorSupplier("deposito"))
+              .build();
+        }
+      }
+    }
+    return getDepositoMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -144,6 +175,16 @@ public final class BankServiceGrpc {
         io.grpc.stub.StreamObserver<com.monyet9.service.WithdrawResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMoneyMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     *client side --streaming , invio piu richiestee ricevo un unica risposta
+     * </pre>
+     */
+    default io.grpc.stub.StreamObserver<com.monyet9.service.DepositoRequest> deposito(
+        io.grpc.stub.StreamObserver<com.monyet9.service.DepositoResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getDepositoMethod(), responseObserver);
+    }
   }
 
   /**
@@ -193,6 +234,17 @@ public final class BankServiceGrpc {
         io.grpc.stub.StreamObserver<com.monyet9.service.WithdrawResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGetMoneyMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *client side --streaming , invio piu richiestee ricevo un unica risposta
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.monyet9.service.DepositoRequest> deposito(
+        io.grpc.stub.StreamObserver<com.monyet9.service.DepositoResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
+          getChannel().newCall(getDepositoMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -264,6 +316,7 @@ public final class BankServiceGrpc {
 
   private static final int METHODID_LOGIN = 0;
   private static final int METHODID_GET_MONEY = 1;
+  private static final int METHODID_DEPOSITO = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -300,6 +353,9 @@ public final class BankServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_DEPOSITO:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.deposito(
+              (io.grpc.stub.StreamObserver<com.monyet9.service.DepositoResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -322,6 +378,13 @@ public final class BankServiceGrpc {
               com.monyet9.service.WithdrawRequest,
               com.monyet9.service.WithdrawResponse>(
                 service, METHODID_GET_MONEY)))
+        .addMethod(
+          getDepositoMethod(),
+          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
+            new MethodHandlers<
+              com.monyet9.service.DepositoRequest,
+              com.monyet9.service.DepositoResponse>(
+                service, METHODID_DEPOSITO)))
         .build();
   }
 
@@ -372,6 +435,7 @@ public final class BankServiceGrpc {
               .setSchemaDescriptor(new BankServiceFileDescriptorSupplier())
               .addMethod(getLoginMethod())
               .addMethod(getGetMoneyMethod())
+              .addMethod(getDepositoMethod())
               .build();
         }
       }

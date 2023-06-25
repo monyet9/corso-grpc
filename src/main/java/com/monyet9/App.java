@@ -6,7 +6,7 @@ import com.monyet9.models.common.CarType;
 import com.monyet9.models.common.Cars;
 
 /**
- * Hello world!
+ * Hello proto!
  *
  */
 public class App 

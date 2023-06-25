@@ -47,4 +47,10 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase{
         }
         responseObserver.onCompleted();
     }
+
+    @Override
+    public StreamObserver<DepositoRequest> deposito(StreamObserver<DepositoResponse> responseObserver) {
+        System.out.println("server instance "+ responseObserver.toString());
+        return new DepositoObserverRequest(responseObserver);
+    }
 }

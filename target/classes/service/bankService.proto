@@ -9,26 +9,29 @@ message BankServiceRequest{
   string username=1;
   string password=2;
 }
-
 message WithdrawRequest{
   string username =1;
   string password=2;
   string value =3;
 }
-
-
 message WithdrawResponse {
   Money money =1;
 }
-
 message Money{
   int32 value =1;
 }
-
 message BankServiceResponse{
   string nome=1;
   string cognome=2;
   google.protobuf.Int32Value saldo=3;
+}
+message DepositoRequest{
+  string username =1;
+  string password=2;
+  string amuountDeposito=3;
+}
+message DepositoResponse{
+  string total=1;
 }
 
 
@@ -38,5 +41,8 @@ service BankService{
 
   //server side -- server streaming , invio una richiesta e ricevo piu risposte
   rpc getMoney(WithdrawRequest) returns (stream WithdrawResponse);
+
+  //client side --streaming , invio piu richiestee ricevo un unica risposta
+  rpc deposito(stream DepositoRequest) returns (DepositoResponse);
 
 }
